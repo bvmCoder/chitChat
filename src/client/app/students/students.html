@@ -1,0 +1,60 @@
+<div class="container">
+    <section id="dashboard-view" class="mainbar">
+        <section class="matter">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="">
+                        <div class="widget-content text-center text-info">
+                            <table class="table table-hover table-condensed table-striped" ng-if="sc.student">
+                                <thead>
+                                    <tr style="cursor: pointer;">
+                                        <th class="text-center" ng-click="sc.sortColumn('name')">Name</th>
+                                        <th class="text-center">User Name</th>
+                                        <th class="text-center">Password</th>
+                                        <th class="text-center">Reading Level</th>
+                                        <th class="text-center">Select</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="p in sc.student | orderBy:sc.orderBy:sc.sortReverse">
+                                        <td class="text-center" ng-bind="p.firstName + ' ' + p.lastName"></td>
+                                        <td class="text-center" ng-bind="p.userName"></td>
+                                        <td class="text-center" ng-bind="p.password"></td>
+                                        <td class="text-center" ng-bind="p.readingLevel"></td>
+                                        <td class="text-center">
+                                            <input type="checkbox" ng-model="p.isSelected" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- <pre>
+                                {{ dbc.student | json }}
+                            </pre> -->
+                        </div>
+                        <div class="widget-foot">
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="alerts">
+                            <div class="alert alert-info" ng-if="true">
+                                <strong ng-bind="sc.getSelectStudentCount()"></strong>
+                                <span> Student Selected</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="alerts">
+                        <div class="alert alert-info text-center" ng-if="true">
+                            <strong>Update Reading Level</strong>
+                        </div>
+                    </div>
+                    <div class="alerts">
+                        <div class="alert alert-success text-center" ng-if="sc.getSelectStudentCount() > 0">
+                            <span><strong>Read Now with <br /> Selected Student...</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+</div>

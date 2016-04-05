@@ -1,0 +1,49 @@
+<div class="container">
+    <div id="shortbackground">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-2">
+                <h5>Display by:</h5>
+                <ul class="filters">
+                    <button type="button" class="glyphicon glyphicon-th-list btn-lg" ng-click="src.isList=true" ng-class="{'active': src.isList}">
+                    </button>
+                  <span>List</span>
+                    <button type="button" class="glyphicon glyphicon-th btn-lg" ng-click="src.isList=false" ng-class="{'active': src.isList}"></button>
+                    
+                    <span>
+                    Images</span>
+                </ul>
+            </div>
+            <div class="col-md-2 filter-sidebar">
+                <div class="row">
+                    <h5 style="margin-left: 20px;">Filters texts By : </h5>
+                    <button class="btn btn-default">Article Type</button>
+                    <div class="clearfix"></div>
+                    <button class="btn btn-default">Reading Level</button>
+                </div>
+            </div>
+            <div class="col-xs-9 filter-content">
+                <div class="row well well-sm">
+                    <div ng-class="{'col-md-12': src.isList, 'col-md-3': !src.isList}" ng-repeat="data in src.dataLists">
+                        <!-- List View -->
+                        <div ng-if="!!src.isList" class="list-view">
+                            <div class="col-xs-2">
+                                <div class="row">
+                                    <img ng-src="{{data.image}}" />
+                                </div>
+                            </div>
+                            <div class="col-xs-9">
+                                <h4 ng-bind="data.title"></h4>
+                                <button class="btn btn-default">Read Now</button>
+                            </div>
+                        </div>
+                        <!-- Grid View -->
+                        <div ng-if="!src.isList" class="grid-view">
+                            <img ng-src="{{data.image}}" />
+                            <div class="title" ng-bind="data.title"></div>
+                            <button class="btn btn-default">Read Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
